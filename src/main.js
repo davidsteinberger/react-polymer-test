@@ -7,6 +7,9 @@ import makeRoutes from './routes'
 import Root from './containers/Root'
 import configureStore from './redux/configureStore'
 
+require("file?name=webcomponents-lite.js!../bower_components/webcomponentsjs/webcomponents-lite.js");
+require("vulcanize?compress=false&base=./!../elements/elements.html");
+
 // Configure history for react-router
 const browserHistory = useRouterHistory(createBrowserHistory)({
   basename: __BASENAME__

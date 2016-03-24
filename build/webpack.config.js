@@ -15,6 +15,7 @@ const webpackConfig = {
   target: 'web',
   devtool: config.compiler_devtool,
   resolve: {
+    modulesDirectories: ["web_modules", "node_modules", "bower_components"],
     root: paths.base(config.dir_client),
     extensions: ['', '.js', '.jsx', '.json']
   },
@@ -45,6 +46,17 @@ webpackConfig.output = {
 // Plugins
 // ------------------------------------
 webpackConfig.plugins = [
+ new webpack.ProvidePlugin({
+   $: "jquery",
+   jQuery: "jquery",
+   "window.jQuery": "jquery"
+ }),
+ new webpack.ProvidePlugin({
+   Polymer: "Polymer",
+ }),
+ new webpack.ResolverPlugin(
+    new webpack.ResolverPlugin.DirectoryDescriptionFilePlugin(".bower.json", ["main"])
+  ),
   new webpack.DefinePlugin(config.globals),
   new HtmlWebpackPlugin({
     template: paths.client('index.html'),
@@ -106,7 +118,7 @@ webpackConfig.eslint = {
 // JavaScript / JSON
 webpackConfig.module.loaders = [{
   test: /\.(js|jsx)$/,
-  exclude: /node_modules/,
+  exclude: /node_modules|bower_components/,
   loader: 'babel',
   query: {
     cacheDirectory: true,
