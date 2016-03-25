@@ -46,14 +46,17 @@ webpackConfig.output = {
 // Plugins
 // ------------------------------------
 webpackConfig.plugins = [
- new webpack.ProvidePlugin({
-   $: "jquery",
-   jQuery: "jquery",
-   "window.jQuery": "jquery"
- }),
- new webpack.ProvidePlugin({
-   Polymer: "Polymer",
- }),
+ //new webpack.ProvidePlugin({
+   //$: "jquery",
+   //jQuery: "jquery",
+   //"window.jQuery": "jquery"
+ //}),
+ //new webpack.ProvidePlugin({
+   //Polymer: "Polymer",
+ //}),
+ //new webpack.ProvidePlugin({
+ //'react-polymer': 'react-polymer'
+ //}),
  new webpack.ResolverPlugin(
     new webpack.ResolverPlugin.DirectoryDescriptionFilePlugin(".bower.json", ["main"])
   ),

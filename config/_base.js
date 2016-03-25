@@ -38,6 +38,7 @@ const config = {
   },
   compiler_vendor : [
     'history',
+    'react-polymer',
     'react',
     'react-redux',
     'react-router',
